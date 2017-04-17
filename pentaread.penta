@@ -1,0 +1,5 @@
+"Use the <Leader>r key combo to access the :togglereader command.
+nmap <Leader>r :togglereader<CR>
+
+
+" vim: set ft=pentadactyl
