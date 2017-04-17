@@ -13,6 +13,13 @@ view][rview].
   The <kbd>&lt;Leader&gt;</kbd> key is the back-solidus <kbd>&bsol;</kbd> by
   default, but can be configured in your `.pentadactylrc` file.
 
+### Notes
+
+* Not all pages are amenable to the reader view.  Depending on the structure of
+  the document, it may take a long time to render, or fail to render at all.
+* After entering the reader view from normal webpage view, it's possible to
+  exit by going back in navigation history.
+
 
 ### Installation
 
