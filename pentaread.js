@@ -33,11 +33,11 @@ var to_reader = function ()
     if ( buffer.documentURI.schemeIs("http") || 
 	 buffer.documentURI.schemeIs("https") )
     {
-	return dactyl.open("".concat(readerhead,
-	    encodeURIComponent(buffer.documentURI.spec)));
+	return dactyl.open(readerhead +
+	                   encodeURIComponent(buffer.documentURI.spec));
     } else {
 	return dactyl.echoerr("pentaread: error: URI scheme not applicable.");
-    };
+    }
 };
 
 /* Go from reader view to normal web page view */
@@ -49,7 +49,7 @@ var from_reader = function ()
 	    buffer.documentURI.spec.replace(readerhead, "")));
     } else {
 	return dactyl.echoerr("pentaread: error: buffer not in reader mode.");
-    };
+    }
 };
 
 /* Toggle reader mode */
@@ -67,37 +67,37 @@ group.commands.add(["reader"],
     "Go to reader view of current page.",
     to_reader,
     {"argcount": 0},
-    true)
+    true);
 
 group.commands.add(["unreader"],
     "Go from reader view to web page.",
     from_reader,
     {"argcount": 0},
-    true)
+    true);
 
 group.commands.add(["togglereader", "tr"],
     "Toggle reader view.",
     toggle_reader,
     {"argcount": 0},
-    true)
+    true);
 
 /* Plugin manifest */
 var INFO =
 ["plugin", {
-    name:    "pentaread",
-    version: "0.1",
-    href:    "https://github.com/congma/pentaread/",
-    summary: "pentaread - access Firefox reader mode from Pentadactyl",
-    xmlns:   "dactyl"},
+    "name":    "pentaread",
+    "version": "0.1",
+    "href":    "https://github.com/congma/pentaread/",
+    "summary": "pentaread - access Firefox reader mode from Pentadactyl",
+    "xmlns":   "dactyl"},
 
     ["author", {
-	email:  "cma@pmo.ac.cn",
-	href:   "https://cma.lamost.org/"}, "Cong Ma"],
+	"email":  "cma@pmo.ac.cn",
+	"href":   "https://cma.lamost.org/"}, "Cong Ma"],
 
-    ["license", {href: "http://opensource.org/licenses/BSD-2-Clause"},
+    ["license", {"href": "http://opensource.org/licenses/BSD-2-Clause"},
 	"BSD License"],
 
-    ["project", {name: "Pentadactyl", "min-version": "1.0" }],
+    ["project", {"name": "Pentadactyl", "min-version": "1.0" }],
 
     ["p", {},
 	"The plugin ", ["str", {}, "pentaread"], " interfaes Firefox's ",
@@ -125,8 +125,8 @@ var INFO =
 	    ["p", {}, "Toggle reader view."],
 	    ["p", {},
 		"By default, this command is mapped to",
-		" the key combo ", ["str", {}, ["k", {name: "Leader"}], "r"],
+		" the key combo ", ["str", {}, ["k", {"name": "Leader"}], "r"],
 		":"],
 	    ["code", {},
-		["ex", {}, ":nmap"], " ", ["k", {name: "Leader"}],
-		"r ", ["ex", {}, ":togglereader"], ["k", {name: "CR"}]]]]];
+		["ex", {}, ":nmap"], " ", ["k", {"name": "Leader"}],
+		"r ", ["ex", {}, ":togglereader"], ["k", {"name": "CR"}]]]]];
