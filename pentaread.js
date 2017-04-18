@@ -67,17 +67,17 @@ var INFO =
 		"r ", ["ex", {}, ":togglereader"], ["k", {"name": "CR"}]]]]];
 
 
-var readerhead = "about:reader?url=";
+let readerhead = "about:reader?url=";
 
 
 /* Return boolean: are we in reader mode? */
-var reader_mode_p = function ()
+function reader_mode_p()
 {
     return buffer.documentURI.spec.startsWith(readerhead);
-};
+}
 
 /* Go to reader view of current buffer (web page) */
-var to_reader = function ()
+function to_reader()
 {
     if ( buffer.documentURI.schemeIs("http") || 
 	 buffer.documentURI.schemeIs("https") )
@@ -87,10 +87,10 @@ var to_reader = function ()
     } else {
 	return dactyl.echoerr("pentaread: error: URI scheme not applicable.");
     }
-};
+}
 
 /* Go from reader view to normal web page view */
-var from_reader = function ()
+function from_reader()
 {
     if ( reader_mode_p() )
     {
@@ -99,16 +99,16 @@ var from_reader = function ()
     } else {
 	return dactyl.echoerr("pentaread: error: buffer not in reader mode.");
     }
-};
+}
 
 /* Toggle reader mode */
-var toggle_reader = function ()
+function toggle_reader()
 {
     if ( reader_mode_p() )
 	return from_reader();
     else
 	return to_reader();
-};
+}
 
 
 /* Pentadactyl commands */
