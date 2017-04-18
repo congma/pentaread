@@ -16,6 +16,55 @@
  */
 
 "use strict";
+/* Plugin manifest */
+var INFO =
+["plugin", {
+    "name":    "pentaread",
+    "version": "0.1",
+    "href":    "https://github.com/congma/pentaread/",
+    "summary": "pentaread - access Firefox reader mode from Pentadactyl",
+    "xmlns":   "dactyl"},
+
+    ["author", {
+	"email":  "cma@pmo.ac.cn",
+	"href":   "https://cma.lamost.org/"}, "Cong Ma"],
+
+    ["license", {"href": "http://opensource.org/licenses/BSD-2-Clause"},
+	"BSD License"],
+
+    ["project", {"name": "Pentadactyl", "min-version": "1.0" }],
+
+    ["p", {},
+	"The plugin ", ["str", {}, "pentaread"], " interfaes Firefox's ",
+	" Reader View feature."],
+
+    ["item", {},
+	["tags", {}, ":reader"],
+	["strut", {}],
+	["spec", {}, ":reader"],
+	["description", {},
+	    ["p", {}, "Go to reader view of current web page."]]],
+
+    ["item", {},
+	["tags", {}, ":unreader"],
+	["strut", {}],
+	["spec", {}, ":unreader"],
+	["description", {},
+	    ["p", {}, "Go from reader view to web page."]]],
+
+    ["item", {},
+	["tags", {}, ":tr :togglereader"],
+	["strut", {}],
+	["spec", {}, ":togglereader"],
+	["description", {},
+	    ["p", {}, "Toggle reader view."],
+	    ["p", {},
+		"By default, this command is mapped to",
+		" the key combo ", ["str", {}, ["k", {"name": "Leader"}], "r"],
+		":"],
+	    ["code", {},
+		["ex", {}, ":nmap"], " ", ["k", {"name": "Leader"}],
+		"r ", ["ex", {}, ":togglereader"], ["k", {"name": "CR"}]]]]];
 
 
 var readerhead = "about:reader?url=";
@@ -80,53 +129,3 @@ group.commands.add(["togglereader", "tr"],
     toggle_reader,
     {"argcount": 0},
     true);
-
-/* Plugin manifest */
-var INFO =
-["plugin", {
-    "name":    "pentaread",
-    "version": "0.1",
-    "href":    "https://github.com/congma/pentaread/",
-    "summary": "pentaread - access Firefox reader mode from Pentadactyl",
-    "xmlns":   "dactyl"},
-
-    ["author", {
-	"email":  "cma@pmo.ac.cn",
-	"href":   "https://cma.lamost.org/"}, "Cong Ma"],
-
-    ["license", {"href": "http://opensource.org/licenses/BSD-2-Clause"},
-	"BSD License"],
-
-    ["project", {"name": "Pentadactyl", "min-version": "1.0" }],
-
-    ["p", {},
-	"The plugin ", ["str", {}, "pentaread"], " interfaes Firefox's ",
-	" Reader View feature."],
-
-    ["item", {},
-	["tags", {}, ":reader"],
-	["strut", {}],
-	["spec", {}, ":reader"],
-	["description", {},
-	    ["p", {}, "Go to reader view of current web page."]]],
-
-    ["item", {},
-	["tags", {}, ":unreader"],
-	["strut", {}],
-	["spec", {}, ":unreader"],
-	["description", {},
-	    ["p", {}, "Go from reader view to web page."]]],
-
-    ["item", {},
-	["tags", {}, ":tr :togglereader"],
-	["strut", {}],
-	["spec", {}, ":togglereader"],
-	["description", {},
-	    ["p", {}, "Toggle reader view."],
-	    ["p", {},
-		"By default, this command is mapped to",
-		" the key combo ", ["str", {}, ["k", {"name": "Leader"}], "r"],
-		":"],
-	    ["code", {},
-		["ex", {}, ":nmap"], " ", ["k", {"name": "Leader"}],
-		"r ", ["ex", {}, ":togglereader"], ["k", {"name": "CR"}]]]]];
